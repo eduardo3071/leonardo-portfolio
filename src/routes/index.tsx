@@ -12,6 +12,7 @@ import profileImg from "@/assets/leonardo-profile.jpg";
 import microidCover from "@/assets/microidlab-cover.jpg";
 import healthgitCover from "@/assets/healthgit-cover.jpg";
 import teacessoCover from "@/assets/teacesso-cover.jpg";
+import teacessoBuildathon from "@/assets/teacesso-buildathon.jpg";
 import g1 from "@/assets/gallery1.jpg";
 import g2 from "@/assets/gallery2.jpg";
 import g3 from "@/assets/gallery3.jpg";
@@ -244,10 +245,12 @@ const projects: Project[] = [
     tags: ["Blockchain", "AI", "Healthcare", "Solana"],
   },
   {
-    img: teacessoCover, title: "TEAcesso",
-    subtitle: "Inclusive accessibility platform",
-    desc: "Digital platform designed to improve accessibility, communication and inclusion experiences.",
-    tags: ["Accessibility", "Social Impact", "Innovation"],
+    img: teacessoCover,
+    gallery: [teacessoCover, teacessoBuildathon],
+    title: "TEAcesso",
+    subtitle: "Inclusive accessibility platform — Lovable Buildathon Runner-up",
+    desc: "Digital platform designed to improve accessibility, communication and inclusion experiences. Recognized as 2nd place (Vice-Champion) at the Lovable Buildathon, alongside top Brazilian universities.",
+    tags: ["Accessibility", "Social Impact", "AI", "Lovable Buildathon"],
   },
 ];
 
