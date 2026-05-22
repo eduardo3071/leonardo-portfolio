@@ -502,6 +502,7 @@ function Index() {
       <Gallery />
       <Contact />
       <Footer />
+      <Lightbox />
     </main>
   );
 }
