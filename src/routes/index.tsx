@@ -450,14 +450,11 @@ function Contact() {
               {t.contact.headlineA} <span className="italic text-emerald-glow">{t.contact.headlineB}</span> {t.contact.headlineC}
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_0_30px_-5px_var(--emerald-glow)] hover:shadow-[0_0_50px_-5px_var(--emerald-glow)] transition-all">
+              <a href="https://www.linkedin.com/in/leonardo-orc" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_0_30px_-5px_var(--emerald-glow)] hover:shadow-[0_0_50px_-5px_var(--emerald-glow)] transition-all">
                 <Linkedin className="h-4 w-4" /> LinkedIn
               </a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full glass glass-hover px-6 py-3 text-sm font-semibold">
-                <Github className="h-4 w-4" /> GitHub
-              </a>
-              <a href="mailto:hello@example.com" className="inline-flex items-center gap-2 rounded-full glass glass-hover px-6 py-3 text-sm font-semibold">
-                <Mail className="h-4 w-4" /> Email
+              <a href="mailto:lo140849@gmail.com" className="inline-flex items-center gap-2 rounded-full glass glass-hover px-6 py-3 text-sm font-semibold">
+                <Mail className="h-4 w-4" /> lo140849@gmail.com
               </a>
             </div>
           </div>
