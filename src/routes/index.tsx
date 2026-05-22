@@ -219,12 +219,23 @@ function Achievements() {
   );
 }
 
-const projects = [
+type Project = {
+  img: string;
+  gallery?: string[];
+  title: string;
+  subtitle: string;
+  desc: string;
+  tags: string[];
+};
+
+const projects: Project[] = [
   {
-    img: microidCover, title: "MicroID Lab",
+    img: microidCover,
+    gallery: [microidCover, g1, g2, g3, g4],
+    title: "MicroID Lab",
     subtitle: "AI-powered infectious disease diagnostics",
-    desc: "Portable artificial intelligence platform focused on accessible diagnostics, epidemiological support and healthcare accessibility for vulnerable regions.",
-    tags: ["AI", "Diagnostics", "Healthcare", "Computer Vision"],
+    desc: "Portable artificial intelligence platform focused on accessible diagnostics, epidemiological support and healthcare accessibility for vulnerable regions. Recognized at Harvard HSIL 2026 — a global hackathon connecting 30+ countries and 40 hubs around the world.",
+    tags: ["AI", "Diagnostics", "Healthcare", "Harvard HSIL 2026"],
   },
   {
     img: healthgitCover, title: "HealthGit",
