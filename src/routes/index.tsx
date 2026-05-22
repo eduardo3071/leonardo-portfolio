@@ -219,12 +219,23 @@ function Achievements() {
   );
 }
 
-const projects = [
+type Project = {
+  img: string;
+  gallery?: string[];
+  title: string;
+  subtitle: string;
+  desc: string;
+  tags: string[];
+};
+
+const projects: Project[] = [
   {
-    img: microidCover, title: "MicroID Lab",
+    img: microidCover,
+    gallery: [microidCover, g1, g2, g3, g4],
+    title: "MicroID Lab",
     subtitle: "AI-powered infectious disease diagnostics",
-    desc: "Portable artificial intelligence platform focused on accessible diagnostics, epidemiological support and healthcare accessibility for vulnerable regions.",
-    tags: ["AI", "Diagnostics", "Healthcare", "Computer Vision"],
+    desc: "Portable artificial intelligence platform focused on accessible diagnostics, epidemiological support and healthcare accessibility for vulnerable regions. Recognized at Harvard HSIL 2026 — a global hackathon connecting 30+ countries and 40 hubs around the world.",
+    tags: ["AI", "Diagnostics", "Healthcare", "Harvard HSIL 2026"],
   },
   {
     img: healthgitCover, title: "HealthGit",
@@ -263,6 +274,16 @@ function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 z-10 pointer-events-none" />
                 <img src={p.img} alt={p.title} loading="lazy" width={1280} height={800}
                   className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" />
+                {p.gallery && p.gallery.length > 1 && (
+                  <div className="mt-3 grid grid-cols-4 gap-2">
+                    {p.gallery.slice(1).map((src, idx) => (
+                      <div key={idx} className="relative aspect-square overflow-hidden rounded-lg border border-primary/15">
+                        <img src={src} alt={`${p.title} — photo ${idx + 2}`} loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-700 hover:scale-110" />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               <div>
                 <div className="text-xs uppercase tracking-[0.25em] text-primary mb-3">0{i + 1} — Project</div>
