@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Particles } from "@/components/Particles";
 import { Counter } from "@/components/Counter";
+import { Lightbox, openLightbox } from "@/components/Lightbox";
 import profileImg from "@/assets/leonardo-profile.jpg";
 import microidCover from "@/assets/microidlab-cover.jpg";
 import healthgitCover from "@/assets/healthgit-cover.jpg";
@@ -274,16 +275,27 @@ function Projects() {
               className={`group grid gap-8 rounded-3xl glass p-6 md:p-10 lg:grid-cols-2 lg:items-center ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}
             >
               <div className="relative overflow-hidden rounded-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 z-10 pointer-events-none" />
-                <img src={p.img} alt={p.title} loading="lazy" width={1280} height={800}
-                  className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" />
+                <button
+                  type="button"
+                  onClick={() => openLightbox(p.img, p.title)}
+                  className="block w-full cursor-zoom-in overflow-hidden rounded-2xl"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 z-10 pointer-events-none" />
+                  <img src={p.img} alt={p.title} loading="lazy" width={1280} height={800}
+                    className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" />
+                </button>
                 {p.gallery && p.gallery.length > 1 && (
                   <div className="mt-3 grid grid-cols-4 gap-2">
                     {p.gallery.slice(1).map((src, idx) => (
-                      <div key={idx} className="relative aspect-square overflow-hidden rounded-lg border border-primary/15">
+                      <button
+                        type="button"
+                        key={idx}
+                        onClick={() => openLightbox(src, `${p.title} — photo ${idx + 2}`)}
+                        className="relative aspect-square overflow-hidden rounded-lg border border-primary/15 cursor-zoom-in"
+                      >
                         <img src={src} alt={`${p.title} — photo ${idx + 2}`} loading="lazy"
                           className="h-full w-full object-cover transition-transform duration-700 hover:scale-110" />
-                      </div>
+                      </button>
                     ))}
                   </div>
                 )}
@@ -408,17 +420,19 @@ function Gallery() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-4">
           {gallery.map((g, i) => (
-            <motion.div
+            <motion.button
+              type="button"
               key={i}
+              onClick={() => openLightbox(g.src, "Gallery photo")}
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className={`group relative overflow-hidden rounded-2xl glass ${g.h}`}
+              className={`group relative overflow-hidden rounded-2xl glass cursor-zoom-in ${g.h}`}
             >
               <img src={g.src} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition" />
-            </motion.div>
+            </motion.button>
           ))}
         </div>
       </div>
@@ -488,6 +502,7 @@ function Index() {
       <Gallery />
       <Contact />
       <Footer />
+      <Lightbox />
     </main>
   );
 }
