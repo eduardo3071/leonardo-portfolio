@@ -245,8 +245,8 @@ const projects: Project[] = [
     tags: ["Blockchain", "AI", "Healthcare", "Solana"],
   },
   {
-    img: teacessoCover,
-    gallery: [teacessoCover, teacessoBuildathon],
+    img: teacessoBuildathon,
+    gallery: [teacessoBuildathon, teacessoCover],
     title: "TEAcesso",
     subtitle: "Inclusive accessibility platform — Lovable Buildathon Runner-up",
     desc: "Digital platform designed to improve accessibility, communication and inclusion experiences. Recognized as 2nd place (Vice-Champion) at the Lovable Buildathon, alongside top Brazilian universities.",
