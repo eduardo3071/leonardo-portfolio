@@ -4,11 +4,12 @@ import { useRef } from "react";
 import {
   Award, Globe, Rocket, Users, GraduationCap, ArrowRight,
   Sparkles, HeartPulse, Brain, Accessibility, Linkedin, Github, Mail,
-  Calendar, MapPin,
+  Calendar, MapPin, Languages,
 } from "lucide-react";
 import { Particles } from "@/components/Particles";
 import { Counter } from "@/components/Counter";
 import { Lightbox, openLightbox } from "@/components/Lightbox";
+import { useT } from "@/lib/i18n";
 import profileImg from "@/assets/leonardo-profile.jpg";
 import microidCover from "@/assets/microidlab-cover.jpg";
 import healthgitCover from "@/assets/healthgit-cover.jpg";
@@ -45,7 +46,25 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+function LangToggle() {
+  const { lang, toggle } = useT();
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label="Toggle language"
+      className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 px-3 py-1.5 text-xs font-semibold text-foreground/80 hover:border-primary hover:text-primary transition"
+    >
+      <Languages className="h-3.5 w-3.5" />
+      <span className={lang === "en" ? "text-primary" : ""}>EN</span>
+      <span className="opacity-40">/</span>
+      <span className={lang === "pt" ? "text-primary" : ""}>PT</span>
+    </button>
+  );
+}
+
 function Nav() {
+  const { t } = useT();
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-auto mt-4 flex max-w-6xl items-center justify-between rounded-full glass px-5 py-2.5 mx-3 md:mx-auto">
@@ -54,20 +73,24 @@ function Nav() {
           <span className="hidden sm:inline">Leonardo O. R. Cardoso</span>
         </a>
         <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
-          <a href="#about" className="hover:text-foreground transition">About</a>
-          <a href="#projects" className="hover:text-foreground transition">Projects</a>
-          <a href="#achievements" className="hover:text-foreground transition">Awards</a>
-          <a href="#contact" className="hover:text-foreground transition">Contact</a>
+          <a href="#about" className="hover:text-foreground transition">{t.nav.about}</a>
+          <a href="#projects" className="hover:text-foreground transition">{t.nav.projects}</a>
+          <a href="#achievements" className="hover:text-foreground transition">{t.nav.awards}</a>
+          <a href="#contact" className="hover:text-foreground transition">{t.nav.contact}</a>
         </nav>
-        <a href="#contact" className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 transition">
-          Get in touch <ArrowRight className="h-3.5 w-3.5" />
-        </a>
+        <div className="flex items-center gap-2">
+          <LangToggle />
+          <a href="#contact" className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 transition">
+            {t.nav.cta} <ArrowRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
       </div>
     </header>
   );
 }
 
 function Hero() {
+  const { t } = useT();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
@@ -76,14 +99,13 @@ function Hero() {
   return (
     <section ref={ref} id="top" className="relative min-h-screen overflow-hidden pt-32 pb-20">
       <Particles count={80} />
-      {/* floating orbs */}
       <div className="pointer-events-none absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-float" />
       <div className="pointer-events-none absolute -right-32 bottom-1/4 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
 
       <motion.div style={{ y, opacity }} className="relative mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.2fr_1fr] lg:items-center">
         <div>
           <motion.div initial="hidden" animate="show" variants={fadeUp} className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5" /> Harvard HSIL 2026 Champion
+            <Sparkles className="h-3.5 w-3.5" /> {t.hero.badge}
           </motion.div>
           <motion.h1
             initial="hidden" animate="show" variants={fadeUp} transition={{ delay: 0.1 }}
@@ -94,18 +116,17 @@ function Hero() {
             <span className="italic text-emerald-glow">Cardoso</span>
           </motion.h1>
           <motion.p initial="hidden" animate="show" variants={fadeUp} transition={{ delay: 0.2 }} className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Building impactful healthcare technologies through artificial intelligence,
-            diagnostics and innovation.
+            {t.hero.tagline}
           </motion.p>
           <motion.p initial="hidden" animate="show" variants={fadeUp} transition={{ delay: 0.3 }} className="mt-3 text-sm uppercase tracking-[0.25em] text-primary/80">
-            Nursing Student • Health Innovation • AI & Entrepreneurship
+            {t.hero.role}
           </motion.p>
           <motion.div initial="hidden" animate="show" variants={fadeUp} transition={{ delay: 0.4 }} className="mt-10 flex flex-wrap gap-4">
             <a href="#projects" className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_40px_-5px_var(--emerald-glow)] hover:shadow-[0_0_60px_-5px_var(--emerald-glow)] transition-all">
-              View Projects <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {t.hero.viewProjects} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a href="#about" className="inline-flex items-center gap-2 rounded-full glass glass-hover px-7 py-3.5 text-sm font-semibold">
-              About Me
+              {t.hero.aboutMe}
             </a>
           </motion.div>
         </div>
@@ -121,7 +142,7 @@ function Hero() {
             <img src={profileImg} alt="Leonardo Oliveira Rodrigues Cardoso" width={768} height={960} className="h-full w-full object-cover" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/60 to-transparent p-6">
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <MapPin className="h-3.5 w-3.5 text-primary" /> São Paulo · Brazil
+                <MapPin className="h-3.5 w-3.5 text-primary" /> {t.hero.location}
               </div>
             </div>
           </div>
@@ -132,6 +153,7 @@ function Hero() {
 }
 
 function About() {
+  const { t } = useT();
   return (
     <section id="about" className="relative py-32 px-6 overflow-hidden">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-3xl animate-float" />
@@ -139,264 +161,232 @@ function About() {
         initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
         className="relative mx-auto max-w-4xl text-center"
       >
-        <SectionLabel>About</SectionLabel>
+        <SectionLabel>{t.about.label}</SectionLabel>
         <h2 className="text-4xl md:text-6xl leading-tight">
-          A human-centered <span className="italic text-emerald-glow">innovator</span><br />
-          at the edge of healthcare and AI.
+          {t.about.headlineA} <span className="italic text-emerald-glow">{t.about.innovator}</span><br />
+          {t.about.headlineB}
         </h2>
         <div className="mt-12 space-y-6 text-lg leading-relaxed text-muted-foreground">
-          <p>
-            Leonardo Oliveira Rodrigues Cardoso is a Nursing student at <span className="text-foreground">FCMSCSP</span>,
-            passionate about healthcare innovation, artificial intelligence and entrepreneurship.
-          </p>
-          <p>
-            He is currently the <span className="text-foreground">President of LATS</span> (Academic League
-            of Health Technology), leading initiatives focused on digital transformation
-            and technology applied to healthcare.
-          </p>
-          <p>
-            Leonardo is deeply involved in innovation ecosystems, scientific research and startup
-            communities, always seeking to create accessible solutions capable of generating
-            <span className="text-primary"> real-world social impact</span>.
-          </p>
+          <p>{t.about.p1a}<span className="text-foreground">{t.about.p1b}</span>{t.about.p1c}</p>
+          <p>{t.about.p2a}<span className="text-foreground">{t.about.p2b}</span>{t.about.p2c}</p>
+          <p>{t.about.p3a}<span className="text-primary">{t.about.p3b}</span></p>
         </div>
       </motion.div>
     </section>
   );
 }
 
-const achievements = [
-  { icon: Award, title: "Harvard HSIL 2026 Champion", text: "Winner of the Harvard Health Systems Innovation Lab Hackathon in Brazil at Hub InovaHC." },
-  { icon: Globe, title: "Global Harvard Circuit", text: "Selected among 93 teams from 41 countries in the international Harvard innovation circuit." },
-  { icon: Rocket, title: "START SP", text: "Member of one of the world's largest startup ecosystems for young entrepreneurs, present in 22+ countries." },
-  { icon: Users, title: "LATS President", text: "Leading healthcare technology initiatives and interdisciplinary innovation projects." },
-  { icon: GraduationCap, title: "Cambridge English", text: "B1 English Certification — Score 153." },
-];
+const achIcons = [Award, Globe, Rocket, Users, GraduationCap];
 
 function Achievements() {
+  const { t } = useT();
   return (
     <section id="achievements" className="relative py-32 px-6">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
-            <SectionLabel>Recognition</SectionLabel>
-            <h2 className="text-4xl md:text-5xl">Milestones & <span className="italic text-emerald-glow">distinctions</span></h2>
+            <SectionLabel>{t.achievements.label}</SectionLabel>
+            <h2 className="text-4xl md:text-5xl">{t.achievements.headline} <span className="italic text-emerald-glow">{t.achievements.headlineItalic}</span></h2>
           </div>
           <div className="flex gap-8">
             <div>
               <div className="text-5xl font-display text-primary"><Counter to={41} suffix="+" /></div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">Countries</div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{t.achievements.countries}</div>
             </div>
             <div>
               <div className="text-5xl font-display text-primary"><Counter to={93} /></div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">Global Teams</div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{t.achievements.teams}</div>
             </div>
             <div>
               <div className="text-5xl font-display text-primary"><Counter to={1} /></div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">Champion</div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{t.achievements.champion}</div>
             </div>
           </div>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {achievements.map((a, i) => (
-            <motion.div
-              key={a.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="group relative rounded-2xl glass glass-hover p-7"
-            >
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 text-primary group-hover:from-primary/40 transition">
-                <a.icon className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-display mb-2">{a.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{a.text}</p>
-            </motion.div>
-          ))}
+          {t.achievements.items.map((a, i) => {
+            const Icon = achIcons[i];
+            return (
+              <motion.div
+                key={a.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                className="group relative rounded-2xl glass glass-hover p-7"
+              >
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 text-primary group-hover:from-primary/40 transition">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-display mb-2">{a.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{a.text}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
-type Project = {
-  img: string;
-  gallery?: string[];
-  title: string;
-  subtitle: string;
-  desc: string;
-  tags: string[];
-};
-
-const projects: Project[] = [
-  {
-    img: microidCover,
-    gallery: [microidCover, g1, g2, g3, g4],
-    title: "MicroID Lab",
-    subtitle: "AI-powered infectious disease diagnostics",
-    desc: "Portable artificial intelligence platform focused on accessible diagnostics, epidemiological support and healthcare accessibility for vulnerable regions. Recognized at Harvard HSIL 2026 — a global hackathon connecting 30+ countries and 40 hubs around the world.",
-    tags: ["AI", "Diagnostics", "Healthcare", "Harvard HSIL 2026"],
-  },
-  {
-    img: healthgitCover, title: "HealthGit",
-    subtitle: "Blockchain + AI for medical records",
-    desc: "Transforming fragmented patient data into intelligent clinical infrastructure using Solana blockchain and artificial intelligence.",
-    tags: ["Blockchain", "AI", "Healthcare", "Solana"],
-  },
-  {
-    img: teacessoBuildathon,
-    gallery: [teacessoBuildathon, teacessoCover],
-    title: "TEAcesso",
-    subtitle: "Inclusive accessibility platform — Lovable Buildathon Runner-up",
-    desc: "Digital platform designed to improve accessibility, communication and inclusion experiences. Recognized as 2nd place (Vice-Champion) at the Lovable Buildathon, alongside top Brazilian universities.",
-    tags: ["Accessibility", "Social Impact", "AI", "Lovable Buildathon"],
-  },
+const projectMeta = [
+  { img: microidCover, gallery: [microidCover, g1, g2, g3, g4], title: "MicroID Lab", tags: ["AI", "Diagnostics", "Healthcare", "Harvard HSIL 2026"] },
+  { img: healthgitCover, title: "HealthGit", tags: ["Blockchain", "AI", "Healthcare", "Solana"] },
+  { img: teacessoBuildathon, gallery: [teacessoBuildathon, teacessoCover], title: "TEAcesso", tags: ["Accessibility", "Social Impact", "AI", "Lovable Buildathon"] },
 ];
 
 function Projects() {
+  const { t } = useT();
   return (
     <section id="projects" className="relative py-32 px-6">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 max-w-2xl">
-          <SectionLabel>Selected work</SectionLabel>
-          <h2 className="text-4xl md:text-6xl">Projects shaping the <span className="italic text-emerald-glow">future</span> of care.</h2>
+          <SectionLabel>{t.projects.label}</SectionLabel>
+          <h2 className="text-4xl md:text-6xl">{t.projects.headlineA} <span className="italic text-emerald-glow">{t.projects.headlineB}</span> {t.projects.headlineC}</h2>
         </div>
 
         <div className="space-y-10">
-          {projects.map((p, i) => (
-            <motion.article
-              key={p.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className={`group grid gap-8 rounded-3xl glass p-6 md:p-10 lg:grid-cols-2 lg:items-center ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}
-            >
-              <div className="relative overflow-hidden rounded-2xl">
-                <button
-                  type="button"
-                  onClick={() => openLightbox(p.img, p.title)}
-                  className="block w-full cursor-zoom-in overflow-hidden rounded-2xl"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 z-10 pointer-events-none" />
-                  <img src={p.img} alt={p.title} loading="lazy" width={1280} height={800}
-                    className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" />
-                </button>
-                {p.gallery && p.gallery.length > 1 && (
-                  <div className="mt-3 grid grid-cols-4 gap-2">
-                    {p.gallery.slice(1).map((src, idx) => (
-                      <button
-                        type="button"
-                        key={idx}
-                        onClick={() => openLightbox(src, `${p.title} — photo ${idx + 2}`)}
-                        className="relative aspect-square overflow-hidden rounded-lg border border-primary/15 cursor-zoom-in"
-                      >
-                        <img src={src} alt={`${p.title} — photo ${idx + 2}`} loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-700 hover:scale-110" />
-                      </button>
+          {projectMeta.map((p, i) => {
+            const tr = t.projects.items[i];
+            return (
+              <motion.article
+                key={p.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+                className={`group grid gap-8 rounded-3xl glass p-6 md:p-10 lg:grid-cols-2 lg:items-center ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}
+              >
+                <div className="relative overflow-hidden rounded-2xl">
+                  <button
+                    type="button"
+                    onClick={() => openLightbox(p.img, p.title)}
+                    className="block w-full cursor-zoom-in overflow-hidden rounded-2xl"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 z-10 pointer-events-none" />
+                    <img src={p.img} alt={p.title} loading="lazy" width={1280} height={800}
+                      className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" />
+                  </button>
+                  {p.gallery && p.gallery.length > 1 && (
+                    <div className="mt-3 grid grid-cols-4 gap-2">
+                      {p.gallery.slice(1).map((src, idx) => (
+                        <button
+                          type="button"
+                          key={idx}
+                          onClick={() => openLightbox(src, `${p.title} — ${idx + 2}`)}
+                          className="relative aspect-square overflow-hidden rounded-lg border border-primary/15 cursor-zoom-in"
+                        >
+                          <img src={src} alt={`${p.title} — ${idx + 2}`} loading="lazy"
+                            className="h-full w-full object-cover transition-transform duration-700 hover:scale-110" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-[0.25em] text-primary mb-3">0{i + 1} — {t.projects.projectN}</div>
+                  <h3 className="text-3xl md:text-4xl font-display mb-2">{p.title}</h3>
+                  <p className="text-lg text-foreground/80 mb-4">{tr.subtitle}</p>
+                  <p className="text-muted-foreground leading-relaxed mb-6">{tr.desc}</p>
+                  <div className="flex flex-wrap gap-2 mb-7">
+                    {p.tags.map(tag => (
+                      <span key={tag} className="rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs text-primary">{tag}</span>
                     ))}
                   </div>
-                )}
-              </div>
-              <div>
-                <div className="text-xs uppercase tracking-[0.25em] text-primary mb-3">0{i + 1} — Project</div>
-                <h3 className="text-3xl md:text-4xl font-display mb-2">{p.title}</h3>
-                <p className="text-lg text-foreground/80 mb-4">{p.subtitle}</p>
-                <p className="text-muted-foreground leading-relaxed mb-6">{p.desc}</p>
-                <div className="flex flex-wrap gap-2 mb-7">
-                  {p.tags.map(t => (
-                    <span key={t} className="rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs text-primary">{t}</span>
-                  ))}
+                  <button className="group/btn inline-flex items-center gap-2 rounded-full border border-foreground/15 px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition">
+                    {t.projects.explore} <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                  </button>
                 </div>
-                <button className="group/btn inline-flex items-center gap-2 rounded-full border border-foreground/15 px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition">
-                  Explore Project <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                </button>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
-const experience = [
-  { year: "2026", title: "Harvard HSIL 2026", place: "Hub InovaHC · Brazil", desc: "Champion of the Harvard Health Systems Innovation Lab hackathon." },
-  { year: "2025", title: "START SP Ecosystem", place: "Global", desc: "Selected for one of the world's largest startup ecosystems for young founders." },
-  { year: "2025", title: "Pesquisadores do Futuro", place: "Research Program", desc: "Scientific research initiative on next-gen healthcare technologies." },
-  { year: "2024", title: "Healthcare Innovation Events", place: "São Paulo", desc: "Speaker and contributor across innovation circuits and health-tech summits." },
-  { year: "2024", title: "HCOR Technology Events", place: "HCOR", desc: "Active participant in clinical technology and digital health forums." },
-  { year: "2023", title: "Garagem for Startups", place: "Founder Track", desc: "Entrepreneurship and product-building intensive for emerging founders." },
+const experienceMeta = [
+  { year: "2026", title: "Harvard HSIL 2026" },
+  { year: "2025", title: "START SP Ecosystem" },
+  { year: "2025" },
+  { year: "2024" },
+  { year: "2024" },
+  { year: "2023" },
 ];
 
 function Experience() {
+  const { t } = useT();
   return (
     <section className="relative py-32 px-6">
       <div className="mx-auto max-w-4xl">
-        <SectionLabel>Journey</SectionLabel>
-        <h2 className="text-4xl md:text-5xl mb-16">Experience & <span className="italic text-emerald-glow">ecosystems</span></h2>
+        <SectionLabel>{t.experience.label}</SectionLabel>
+        <h2 className="text-4xl md:text-5xl mb-16">{t.experience.headlineA} <span className="italic text-emerald-glow">{t.experience.headlineB}</span></h2>
 
         <div className="relative">
           <div className="absolute left-[7px] top-1 bottom-1 w-px bg-gradient-to-b from-primary/60 via-primary/20 to-transparent" />
-          {experience.map((e, i) => (
-            <motion.div
-              key={e.title + i}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="relative pl-10 pb-10"
-            >
-              <div className="absolute left-0 top-1.5 h-4 w-4 rounded-full bg-primary shadow-[0_0_20px_var(--emerald-glow)]" />
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary mb-1">
-                <Calendar className="h-3.5 w-3.5" /> {e.year} · {e.place}
-              </div>
-              <h3 className="text-xl md:text-2xl font-display mb-1">{e.title}</h3>
-              <p className="text-muted-foreground">{e.desc}</p>
-            </motion.div>
-          ))}
+          {experienceMeta.map((m, i) => {
+            const e = t.experience.items[i];
+            const title = m.title ?? e.title ?? "";
+            return (
+              <motion.div
+                key={title + i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                className="relative pl-10 pb-10"
+              >
+                <div className="absolute left-0 top-1.5 h-4 w-4 rounded-full bg-primary shadow-[0_0_20px_var(--emerald-glow)]" />
+                <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary mb-1">
+                  <Calendar className="h-3.5 w-3.5" /> {m.year} · {e.place}
+                </div>
+                <h3 className="text-xl md:text-2xl font-display mb-1">{title}</h3>
+                <p className="text-muted-foreground">{e.desc}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
-const values = [
-  { icon: Brain, title: "Innovation", text: "Pushing the boundaries of what's possible — using AI, computer vision and emerging tech to reimagine clinical workflows." },
-  { icon: HeartPulse, title: "Social Impact", text: "Building solutions that move beyond hospitals — reaching vulnerable communities and rewriting access to care." },
-  { icon: Accessibility, title: "Accessible Healthcare", text: "Designing human-centered technology that includes everyone, regardless of geography, ability, or background." },
-];
+const valueIcons = [Brain, HeartPulse, Accessibility];
 
 function Values() {
+  const { t } = useT();
   return (
     <section className="relative py-32 px-6">
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <SectionLabel>Principles</SectionLabel>
-          <h2 className="text-4xl md:text-5xl">What I <span className="italic text-emerald-glow">stand for</span></h2>
+          <SectionLabel>{t.values.label}</SectionLabel>
+          <h2 className="text-4xl md:text-5xl">{t.values.headlineA} <span className="italic text-emerald-glow">{t.values.headlineB}</span></h2>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {values.map((v, i) => (
-            <motion.div
-              key={v.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-3xl glass p-8 md:p-10 text-center"
-            >
-              <div className="pointer-events-none absolute -top-20 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-primary/30 blur-3xl opacity-50 group-hover:opacity-100 transition duration-700" />
-              <div className="relative">
-                <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-[0_0_40px_-5px_var(--emerald-glow)]">
-                  <v.icon className="h-7 w-7" />
+          {t.values.items.map((v, i) => {
+            const Icon = valueIcons[i];
+            return (
+              <motion.div
+                key={v.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.7, delay: i * 0.1 }}
+                className="group relative overflow-hidden rounded-3xl glass p-8 md:p-10 text-center"
+              >
+                <div className="pointer-events-none absolute -top-20 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-primary/30 blur-3xl opacity-50 group-hover:opacity-100 transition duration-700" />
+                <div className="relative">
+                  <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-[0_0_40px_-5px_var(--emerald-glow)]">
+                    <Icon className="h-7 w-7" />
+                  </div>
+                  <h3 className="text-2xl font-display mb-3">{v.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{v.text}</p>
                 </div>
-                <h3 className="text-2xl font-display mb-3">{v.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{v.text}</p>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -411,19 +401,20 @@ const gallery = [
 ];
 
 function Gallery() {
+  const { t } = useT();
   return (
     <section className="relative py-32 px-6">
       <div className="mx-auto max-w-6xl">
         <div className="mb-12">
-          <SectionLabel>Moments</SectionLabel>
-          <h2 className="text-4xl md:text-5xl">From <span className="italic text-emerald-glow">labs</span> to global stages.</h2>
+          <SectionLabel>{t.gallery.label}</SectionLabel>
+          <h2 className="text-4xl md:text-5xl">{t.gallery.headlineA} <span className="italic text-emerald-glow">{t.gallery.headlineB}</span> {t.gallery.headlineC}</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-4">
           {gallery.map((g, i) => (
             <motion.button
               type="button"
               key={i}
-              onClick={() => openLightbox(g.src, "Gallery photo")}
+              onClick={() => openLightbox(g.src, "Gallery")}
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -441,6 +432,7 @@ function Gallery() {
 }
 
 function Contact() {
+  const { t } = useT();
   return (
     <section id="contact" className="relative py-32 px-6">
       <div className="mx-auto max-w-4xl">
@@ -453,9 +445,9 @@ function Contact() {
         >
           <div className="pointer-events-none absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-primary/30 blur-3xl animate-pulse-glow" />
           <div className="relative">
-            <SectionLabel>Let's connect</SectionLabel>
+            <SectionLabel>{t.contact.label}</SectionLabel>
             <h2 className="text-4xl md:text-6xl leading-tight mb-8">
-              Let's build the <span className="italic text-emerald-glow">future of healthcare</span> together.
+              {t.contact.headlineA} <span className="italic text-emerald-glow">{t.contact.headlineB}</span> {t.contact.headlineC}
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_0_30px_-5px_var(--emerald-glow)] hover:shadow-[0_0_50px_-5px_var(--emerald-glow)] transition-all">
@@ -476,14 +468,15 @@ function Contact() {
 }
 
 function Footer() {
+  const { t } = useT();
   return (
     <footer className="border-t border-border/50 px-6 py-10">
       <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
         <div>
           <div className="font-display text-base">Leonardo Oliveira Rodrigues Cardoso © 2026</div>
-          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mt-1">Healthcare • Innovation • AI</div>
+          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mt-1">{t.footer.tagline}</div>
         </div>
-        <div className="text-xs text-muted-foreground">Designed with intent. Built for impact.</div>
+        <div className="text-xs text-muted-foreground">{t.footer.built}</div>
       </div>
     </footer>
   );
