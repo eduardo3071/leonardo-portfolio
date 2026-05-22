@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import {
   Award, Globe, Rocket, Users, GraduationCap, ArrowRight,
-  Sparkles, HeartPulse, Brain, Accessibility, Linkedin, Github, Mail,
+  Sparkles, HeartPulse, Brain, Accessibility, Linkedin, Mail,
   Calendar, MapPin, Languages,
 } from "lucide-react";
 import { Particles } from "@/components/Particles";
