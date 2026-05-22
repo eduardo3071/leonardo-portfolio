@@ -309,11 +309,11 @@ function Projects() {
 
 const experienceMeta = [
   { year: "2026", title: "Harvard HSIL 2026" },
-  { year: "2025", title: "START SP Ecosystem" },
+  { year: "2026", title: "START SP Ecosystem" },
+  { year: "2026" },
   { year: "2025" },
-  { year: "2024" },
-  { year: "2024" },
-  { year: "2023" },
+  { year: "2026" },
+  { year: "2026" },
 ];
 
 function Experience() {
