@@ -197,20 +197,8 @@ function Achievements() {
             <SectionLabel>{t.achievements.label}</SectionLabel>
             <h2 className="text-4xl md:text-5xl">{t.achievements.headline} <span className="italic text-emerald-glow">{t.achievements.headlineItalic}</span></h2>
           </div>
-          <div className="flex gap-8">
-            <div>
-              <div className="text-5xl font-display text-primary"><Counter to={41} suffix="+" /></div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{t.achievements.countries}</div>
-            </div>
-            <div>
-              <div className="text-5xl font-display text-primary"><Counter to={93} /></div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{t.achievements.teams}</div>
-            </div>
-            <div>
-              <div className="text-5xl font-display text-primary"><Counter to={1} /></div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{t.achievements.champion}</div>
-            </div>
-          </div>
+          <div></div>
+
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
