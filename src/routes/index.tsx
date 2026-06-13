@@ -324,6 +324,8 @@ const experienceMeta = [
   { year: "2025" },
   { year: "2026" },
   { year: "2026" },
+  { year: "2026", title: "Flux AI" },
+  { year: "2026", title: "Jesus Votará" },
 ];
 
 function Experience() {
