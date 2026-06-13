@@ -112,6 +112,8 @@ const en: Dict = {
       { title: "Healthcare Innovation Events", place: "São Paulo", desc: "Speaker and contributor across innovation circuits and health-tech summits." },
       { title: "HCOR Technology Events", place: "HCOR", desc: "Active participant in clinical technology and digital health forums." },
       { title: "Garagem for Startups", place: "Founder Track", desc: "Entrepreneurship and product-building intensive for emerging founders." },
+      { title: "Flux AI", place: "Link School + GRI Hackathon", desc: "Vice-Champion of the Zero to Hero Hackathon — AI-powered cash flow forecasting for real estate developers." },
+      { title: "Jesus Votará", place: "42 SP × Replit × ChatGPT", desc: "Champion of the CivicTech × AI Hackathon — AI app analyzing parliamentarians' votes against the values taught by Jesus Christ." },
     ],
   },
   values: {
@@ -194,6 +196,8 @@ const pt: Dict = {
       { title: "Eventos de Inovação em Saúde", place: "São Paulo", desc: "Palestrante e contribuidor em circuitos de inovação e eventos de health-tech." },
       { title: "Eventos de Tecnologia do HCOR", place: "HCOR", desc: "Participante ativo em fóruns de tecnologia clínica e saúde digital." },
       { title: "Garagem para Startups", place: "Trilha de Founders", desc: "Intensivo de empreendedorismo e construção de produto para fundadores emergentes." },
+      { title: "Flux AI", place: "Hackathon Link School + GRI", desc: "Vice-Campeão do Zero to Hero Hackathon — previsão de fluxo de caixa com IA para incorporadoras." },
+      { title: "Jesus Votará", place: "42 SP × Replit × ChatGPT", desc: "Campeão do Hackathon CivicTech × IA — app com IA que analisa os votos de parlamentares à luz dos valores ensinados por Jesus Cristo." },
     ],
   },
   values: {
