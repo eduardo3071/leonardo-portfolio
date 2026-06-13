@@ -20,6 +20,10 @@ import fluxaiTeam from "@/assets/fluxai-team.png.asset.json";
 import fluxaiHackathon from "@/assets/fluxai-hackathon.png.asset.json";
 import fluxaiLink from "@/assets/fluxai-link.png.asset.json";
 import fluxaiTeamWork from "@/assets/fluxai-team-work.png.asset.json";
+import jesusCover from "@/assets/jesus-cover.png.asset.json";
+import jesusTeam from "@/assets/jesus-team.png.asset.json";
+import jesusSponsors from "@/assets/jesus-sponsors.png.asset.json";
+import jesusEvent from "@/assets/jesus-event.png.asset.json";
 import g1 from "@/assets/gallery1.jpg";
 import g2 from "@/assets/gallery2.jpg";
 import g3 from "@/assets/gallery3.jpg";
@@ -238,6 +242,7 @@ function Achievements() {
 const projectMeta = [
   { img: microidCover, gallery: [microidCover, g1, g2, g3, g4], title: "MicroID Lab", tags: ["AI", "Diagnostics", "Healthcare", "Harvard HSIL 2026"] },
   { img: fluxaiCover.url, gallery: [fluxaiCover.url, fluxaiTeam.url, fluxaiHackathon.url, fluxaiLink.url, fluxaiTeamWork.url], title: "Flux AI", tags: ["AI", "Real Estate", "FinTech", "Link School + GRI Hackathon"] },
+  { img: jesusCover.url, gallery: [jesusCover.url, jesusTeam.url, jesusSponsors.url, jesusEvent.url], title: "Jesus Votará", tags: ["AI", "CivicTech", "Public Data", "42 SP × Replit × ChatGPT"] },
   { img: teacessoBuildathon, gallery: [teacessoBuildathon, teacessoCover], title: "TEAcesso", tags: ["Accessibility", "Social Impact", "AI", "Lovable Buildathon"] },
 ];
 
