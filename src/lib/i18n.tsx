@@ -96,7 +96,7 @@ const en: Dict = {
     explore: "Explore Project",
     items: [
       { subtitle: "AI-powered infectious disease diagnostics", desc: "Portable artificial intelligence platform focused on accessible diagnostics, epidemiological support and healthcare accessibility for vulnerable regions. Recognized at Harvard HSIL 2026 — a global hackathon connecting 30+ countries and 40 hubs around the world." },
-      { subtitle: "Blockchain + AI for medical records", desc: "Transforming fragmented patient data into intelligent clinical infrastructure using Solana blockchain and artificial intelligence." },
+      
       { subtitle: "Inclusive accessibility platform — Lovable Buildathon Runner-up", desc: "Digital platform designed to improve accessibility, communication and inclusion experiences. Recognized as 2nd place (Vice-Champion) at the Lovable Buildathon, alongside top Brazilian universities." },
     ],
   },
@@ -177,7 +177,7 @@ const pt: Dict = {
     explore: "Explorar Projeto",
     items: [
       { subtitle: "Diagnóstico de doenças infecciosas com IA", desc: "Plataforma portátil de inteligência artificial focada em diagnóstico acessível, suporte epidemiológico e acessibilidade à saúde para regiões vulneráveis. Reconhecido no Harvard HSIL 2026 — um hackathon global que conecta 30+ países e 40 hubs ao redor do mundo." },
-      { subtitle: "Blockchain + IA para prontuários médicos", desc: "Transformando dados fragmentados de pacientes em infraestrutura clínica inteligente usando blockchain Solana e inteligência artificial." },
+      
       { subtitle: "Plataforma de acessibilidade inclusiva — Vice-Campeã do Lovable Buildathon", desc: "Plataforma digital projetada para melhorar experiências de acessibilidade, comunicação e inclusão. Reconhecida como 2º lugar (Vice-Campeã) no Lovable Buildathon, ao lado das principais universidades brasileiras." },
     ],
   },
