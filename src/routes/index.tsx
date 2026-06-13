@@ -12,7 +12,7 @@ import { Lightbox, openLightbox } from "@/components/Lightbox";
 import { useT } from "@/lib/i18n";
 import profileImg from "@/assets/leonardo-profile.jpg";
 import microidCover from "@/assets/microidlab-cover.jpg";
-import healthgitCover from "@/assets/healthgit-cover.jpg";
+
 import teacessoCover from "@/assets/teacesso-cover.jpg";
 import teacessoBuildathon from "@/assets/teacesso-buildathon.jpg";
 import g1 from "@/assets/gallery1.jpg";
@@ -232,7 +232,7 @@ function Achievements() {
 
 const projectMeta = [
   { img: microidCover, gallery: [microidCover, g1, g2, g3, g4], title: "MicroID Lab", tags: ["AI", "Diagnostics", "Healthcare", "Harvard HSIL 2026"] },
-  { img: healthgitCover, title: "HealthGit", tags: ["Blockchain", "AI", "Healthcare", "Solana"] },
+  
   { img: teacessoBuildathon, gallery: [teacessoBuildathon, teacessoCover], title: "TEAcesso", tags: ["Accessibility", "Social Impact", "AI", "Lovable Buildathon"] },
 ];
 
