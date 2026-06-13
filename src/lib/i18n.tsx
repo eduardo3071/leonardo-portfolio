@@ -96,7 +96,7 @@ const en: Dict = {
     explore: "Explore Project",
     items: [
       { subtitle: "AI-powered infectious disease diagnostics", desc: "Portable artificial intelligence platform focused on accessible diagnostics, epidemiological support and healthcare accessibility for vulnerable regions. Recognized at Harvard HSIL 2026 — a global hackathon connecting 30+ countries and 40 hubs around the world." },
-      
+      { subtitle: "AI-powered cash flow forecasting for real estate — Link School + GRI Hackathon Runner-up", desc: "Web platform that forecasts, based on key inputs from the developer, when cash flow is about to turn red — before it happens. Built to help small and mid-size real estate developers anticipate mismatches between construction outflows and slowing sales. Awarded 2nd place (Vice-Champion) at the Zero to Hero Hackathon (Link School of Business + GRI Institute)." },
       { subtitle: "Inclusive accessibility platform — Lovable Buildathon Runner-up", desc: "Digital platform designed to improve accessibility, communication and inclusion experiences. Recognized as 2nd place (Vice-Champion) at the Lovable Buildathon, alongside top Brazilian universities." },
     ],
   },
@@ -177,7 +177,7 @@ const pt: Dict = {
     explore: "Explorar Projeto",
     items: [
       { subtitle: "Diagnóstico de doenças infecciosas com IA", desc: "Plataforma portátil de inteligência artificial focada em diagnóstico acessível, suporte epidemiológico e acessibilidade à saúde para regiões vulneráveis. Reconhecido no Harvard HSIL 2026 — um hackathon global que conecta 30+ países e 40 hubs ao redor do mundo." },
-      
+      { subtitle: "Previsão de fluxo de caixa com IA para o setor imobiliário — Vice-Campeão do Hackathon Link School + GRI", desc: "Plataforma web que prevê, a partir de inputs-chave da incorporadora, quando o fluxo de caixa está prestes a ficar negativo — antes que aconteça. Criada para ajudar pequenas e médias incorporadoras a antecipar descompassos entre as saídas da obra e a desaceleração das vendas. Vice-Campeã do Zero to Hero Hackathon (Link School of Business + GRI Institute)." },
       { subtitle: "Plataforma de acessibilidade inclusiva — Vice-Campeã do Lovable Buildathon", desc: "Plataforma digital projetada para melhorar experiências de acessibilidade, comunicação e inclusão. Reconhecida como 2º lugar (Vice-Campeã) no Lovable Buildathon, ao lado das principais universidades brasileiras." },
     ],
   },
