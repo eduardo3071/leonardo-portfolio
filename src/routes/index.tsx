@@ -15,6 +15,11 @@ import microidCover from "@/assets/microidlab-cover.jpg";
 
 import teacessoCover from "@/assets/teacesso-cover.jpg";
 import teacessoBuildathon from "@/assets/teacesso-buildathon.jpg";
+import fluxaiCover from "@/assets/fluxai-cover.png.asset.json";
+import fluxaiTeam from "@/assets/fluxai-team.png.asset.json";
+import fluxaiHackathon from "@/assets/fluxai-hackathon.png.asset.json";
+import fluxaiLink from "@/assets/fluxai-link.png.asset.json";
+import fluxaiTeamWork from "@/assets/fluxai-team-work.png.asset.json";
 import g1 from "@/assets/gallery1.jpg";
 import g2 from "@/assets/gallery2.jpg";
 import g3 from "@/assets/gallery3.jpg";
@@ -232,7 +237,7 @@ function Achievements() {
 
 const projectMeta = [
   { img: microidCover, gallery: [microidCover, g1, g2, g3, g4], title: "MicroID Lab", tags: ["AI", "Diagnostics", "Healthcare", "Harvard HSIL 2026"] },
-  
+  { img: fluxaiCover.url, gallery: [fluxaiCover.url, fluxaiTeam.url, fluxaiHackathon.url, fluxaiLink.url, fluxaiTeamWork.url], title: "Flux AI", tags: ["AI", "Real Estate", "FinTech", "Link School + GRI Hackathon"] },
   { img: teacessoBuildathon, gallery: [teacessoBuildathon, teacessoCover], title: "TEAcesso", tags: ["Accessibility", "Social Impact", "AI", "Lovable Buildathon"] },
 ];
 
