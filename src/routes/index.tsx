@@ -13,7 +13,6 @@ import { useT } from "@/lib/i18n";
 import profileImg from "@/assets/leonardo-profile.jpg";
 import microidCover from "@/assets/microidlab-cover.jpg";
 
-import teacessoCover from "@/assets/teacesso-cover.jpg";
 import teacessoBuildathon from "@/assets/teacesso-buildathon.jpg";
 import fluxaiCover from "@/assets/fluxai-cover.png.asset.json";
 import fluxaiTeam from "@/assets/fluxai-team.png.asset.json";
@@ -231,7 +230,7 @@ const projectMeta = [
   { img: microidCover, gallery: [microidCover, g1, g2, g3, g4], title: "MicroID Lab", tags: ["AI", "Diagnostics", "Healthcare", "Harvard HSIL 2026"] },
   { img: fluxaiCover.url, gallery: [fluxaiCover.url, fluxaiTeam.url, fluxaiHackathon.url, fluxaiLink.url, fluxaiTeamWork.url], title: "Flux AI", tags: ["AI", "Real Estate", "FinTech", "Link School + GRI Hackathon"] },
   { img: jesusCover.url, gallery: [jesusCover.url, jesusTeam.url, jesusSponsors.url, jesusEvent.url], title: "Jesus Votará", tags: ["AI", "CivicTech", "Public Data", "42 SP × Replit × ChatGPT"] },
-  { img: teacessoBuildathon, gallery: [teacessoBuildathon, teacessoCover], title: "TEAcesso", tags: ["Accessibility", "Social Impact", "AI", "Lovable Buildathon"] },
+  { img: teacessoBuildathon, gallery: [teacessoBuildathon], title: "TEAcesso", tags: ["Accessibility", "Social Impact", "AI", "Lovable Buildathon"] },
 ];
 
 function Projects() {
